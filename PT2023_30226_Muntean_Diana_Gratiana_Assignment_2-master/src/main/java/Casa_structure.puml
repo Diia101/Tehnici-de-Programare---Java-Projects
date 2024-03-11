@@ -1,0 +1,225 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Casa",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_2008276921 { 
+   	label=Prelucrare
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Prelucrare2008276921[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Prelucrare</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   caseDeschise: ArrayList&lt;Casa&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nrCaseDisponibile: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   timpMediuAsteptare: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   timpTotalGolireCase: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ actualizeazaTimpMediuAsteptare()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ actualizeazaTimpTotalGolire()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ adaugaCasa(c: Casa)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ inchideCasa(c: Casa)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2021122027 { 
+   	label=Client
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Client2021122027[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Client</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   idClient: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   timpServire: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   timpSosire: int [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2023557713 { 
+   	label=ImplementareProcesareCase
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   ImplementareProcesareCase2023557713[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ImplementareProcesareCase</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   casePrelucrate: Prelucrare [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ distribuireClient(cl: Client)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2029339038 { 
+   	label=Temporizator
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Temporizator2029339038[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Temporizator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   N: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   casePrelucrate: Prelucrare [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   counter: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fereastra: Fereastra [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   indexClient: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nrMaxCase: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   oraDeVarf: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   timpFinal: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   timpMaximServire: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   timpMaximSosire: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   timpMinimServire: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   timpMinimSosire: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ increaseCounter()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ run()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2092876 { 
+   	label=Casa
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Casa2092876[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Casa</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   clienti: ArrayList&lt;Client&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   idCoada: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   timpGolire: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># actualizeazaTimpGolireCasa()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ adaugaClient(cl: Client)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ eliminaClient(): Client</TD></TR>
+<TR><TD ALIGN="LEFT" >+ esteDeschisa(): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Casa2092876 -> Client2021122027[label="clienti
+[0..*]"];
+ImplementareProcesareCase2023557713 -> Prelucrare2008276921[label="casePrelucrate
+[0..1]"];
+Prelucrare2008276921 -> Casa2092876[label="caseDeschise
+[0..*]"];
+Temporizator2029339038 -> Prelucrare2008276921[label="casePrelucrate
+[0..1]"];
+    
+}
+@enduml
