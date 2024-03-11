@@ -1,0 +1,40 @@
+Order Bill
+Order ID: 12
+Client Name: www
+Product Name: ruj
+Quantity: 20
+Price: 2440.0
+Data: 2023-05-30 at 18:24:01 EEST
+
+Order Bill
+Order ID: 34
+Client Name: www
+Product Name: ruj
+Quantity: 12
+Price: 1464.0
+Data: 2023-05-30 at 18:24:01 EEST
+
+Order Bill
+Order ID: 54
+Client Name: www
+Product Name: ruj
+Quantity: 5
+Price: 610.0
+Data: 2023-05-30 at 18:24:01 EEST
+
+Order Bill
+Order ID: 55
+Client Name: www
+Product Name: ruj
+Quantity: 5
+Price: 610.0
+Data: 2023-05-30 at 18:24:01 EEST
+
+Order Bill
+Order ID: 123
+Client Name: deea
+Product Name: ruj
+Quantity: 133
+Price: 16226.0
+Data: 2023-05-30 at 18:24:01 EEST
+
